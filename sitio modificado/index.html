@@ -1,0 +1,1859 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Tenis Pro | Pasión por la Cancha</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<!-- 🎾 FAVICON PREMIUM (Icono en la pestaña del navegador) -->
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='46' stroke='%23facc15' stroke-width='4'/><path d='M22 22 C 48 48, 48 52, 22 78' stroke='%23facc15' stroke-width='5' fill='none' stroke-linecap='round'/><path d='M78 22 C 52 48, 52 52, 78 78' stroke='%23facc15' stroke-width='5' fill='none' stroke-linecap='round'/><path d='M78 22 L80 16 L82 22 L88 24 L82 26 L80 32 L78 26 L72 24 Z' fill='%23facc15'/></svg>" />
+		
+		<!-- Tipografía Premium -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		
+		<!-- Iconos -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+		
+		<style>
+			/*  PALETA AZUL PREMIUM */
+			:root {
+				--tennis-blue: #1e3a8a;
+				--tennis-blue-light: #3b82f6;
+				--tennis-blue-dark: #0f172a;
+				--tennis-yellow: #facc15;
+				--tennis-sky: #e0f2fe;
+				--bg-soft: #f8fafc;
+				--text-dark: #0f172a;
+				--text-muted: #475569;
+			}
+
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				background-color: var(--bg-soft);
+				background-image: 
+					radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+					radial-gradient(at 100% 100%, rgba(30, 58, 138, 0.1) 0px, transparent 50%);
+				background-attachment: fixed;
+				color: var(--text-dark);
+				font-family: 'Plus Jakarta Sans', sans-serif;
+				line-height: 1.7;
+				font-size: 18px;
+				-webkit-font-smoothing: antialiased;
+				overflow-x: hidden;
+			}
+
+			h1, h2, h3, h4 {
+				font-family: 'Playfair Display', serif;
+				font-weight: 800;
+				letter-spacing: -0.02em;
+				line-height: 1.2;
+			}
+
+			/* 🧭 MENÚ DE NAVEGACIÓN FIJO */
+			.navbar {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				background: rgba(255, 255, 255, 0.98);
+				backdrop-filter: blur(20px);
+				-webkit-backdrop-filter: blur(20px);
+				z-index: 1000;
+				padding: 1rem 2rem;
+				box-shadow: 0 4px 30px rgba(30, 58, 138, 0.1);
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				transition: all 0.3s ease;
+				transform: translateY(-100%);
+			}
+
+			.navbar.visible {
+				transform: translateY(0);
+			}
+
+			/* 🎾 LOGO PREMIUM MEJORADO */
+			.navbar .logo {
+				font-family: 'Playfair Display', serif;
+				font-weight: 800;
+				font-size: 1.8rem;
+				color: var(--tennis-blue);
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				gap: 0.7rem;
+				transition: transform 0.3s ease;
+			}
+
+			.navbar .logo:hover {
+				transform: scale(1.03);
+			}
+
+			.navbar .logo span {
+				color: var(--tennis-yellow);
+			}
+
+			.navbar ul {
+				display: flex;
+				gap: 2rem;
+				list-style: none;
+			}
+
+			.navbar ul a {
+				color: var(--text-dark);
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.95rem;
+				transition: color 0.3s;
+				position: relative;
+			}
+
+			.navbar ul a::after {
+				content: '';
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: var(--tennis-yellow);
+				transition: width 0.3s;
+			}
+
+			.navbar ul a:hover {
+				color: var(--tennis-blue);
+			}
+
+			.navbar ul a:hover::after {
+				width: 100%;
+			}
+
+			/* 🏟️ HEADER */
+			#header {
+				background: 
+					linear-gradient(160deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%),
+					url('https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+				padding: 4rem 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			#header::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-image: 
+					radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.3) 0%, transparent 30%),
+					radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.4) 0%, transparent 30%);
+				animation: floatParticles 20s ease-in-out infinite;
+				pointer-events: none;
+			}
+
+			#header h1 {
+				color: var(--tennis-yellow);
+				font-size: clamp(3.5rem, 8vw, 6.5rem);
+				margin-bottom: 1.5rem;
+				text-shadow: 0 4px 30px rgba(0,0,0,0.4);
+				animation: fadeInUp 1.2s ease-out;
+				position: relative;
+				z-index: 1;
+			}
+
+			#header p {
+				color: rgba(255,255,255,0.95);
+				font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+				max-width: 700px;
+				margin: 0 auto 3rem auto;
+				font-weight: 300;
+				animation: fadeInUp 1.2s ease-out 0.3s backwards;
+				position: relative;
+				z-index: 1;
+			}
+
+			.button.primary {
+				background-color: var(--tennis-yellow);
+				color: var(--tennis-blue);
+				font-family: 'Plus Jakarta Sans', sans-serif;
+				font-weight: 700;
+				font-size: 1.1rem;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				padding: 1.3rem 3.5rem;
+				border: none;
+				border-radius: 50px;
+				transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				box-shadow: 0 10px 30px rgba(250, 204, 21, 0.4);
+				display: inline-block;
+				text-decoration: none;
+				animation: fadeInUp 1.2s ease-out 0.6s backwards;
+				position: relative;
+				z-index: 1;
+				overflow: hidden;
+				cursor: pointer;
+			}
+
+			.button.primary:hover {
+				background-color: #ffffff;
+				transform: translateY(-5px) scale(1.08);
+				box-shadow: 0 20px 50px rgba(255, 255, 255, 0.5);
+			}
+
+			.main.special {
+				padding: 8rem 0;
+				position: relative;
+			}
+
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2.5rem;
+			}
+
+			.major {
+				text-align: center;
+				margin-bottom: 4rem;
+			}
+
+			.major h2 {
+				color: var(--tennis-blue);
+				font-size: clamp(2.5rem, 5vw, 3.5rem);
+				margin-bottom: 1.2rem;
+				position: relative;
+				display: inline-block;
+				opacity: 0;
+				transform: translateY(50px);
+				transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+
+			.major h2.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.major h2::after {
+				content: '';
+				display: block;
+				width: 80px;
+				height: 5px;
+				background: linear-gradient(90deg, var(--tennis-yellow), var(--tennis-blue-light));
+				margin: 1.2rem auto 0 auto;
+				border-radius: 10px;
+			}
+
+			.content p {
+				font-size: 1.2rem;
+				color: var(--text-muted);
+				max-width: 800px;
+				margin: 0 auto;
+				line-height: 1.9;
+				text-align: center;
+				opacity: 0;
+				transform: translateY(30px);
+				transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+			}
+
+			.content p.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			/* 📊 ESTADÍSTICAS */
+			.stats-section {
+				background: linear-gradient(135deg, var(--tennis-blue) 0%, var(--tennis-blue-dark) 100%);
+				padding: 6rem 0;
+				margin: 4rem 0;
+			}
+
+			.stats-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 3rem;
+				text-align: center;
+			}
+
+			.stat-item {
+				padding: 2rem;
+				color: white;
+			}
+
+			.stat-number {
+				font-size: 4rem;
+				font-weight: 800;
+				color: var(--tennis-yellow);
+				display: block;
+				margin-bottom: 0.5rem;
+				font-family: 'Playfair Display', serif;
+			}
+
+			.stat-label {
+				font-size: 1.1rem;
+				opacity: 0.9;
+			}
+
+			/* 🖼️ GALERÍA */
+			.gallery-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin: 4rem 0;
+			}
+
+			.gallery-item {
+				position: relative;
+				border-radius: 20px;
+				overflow: hidden;
+				box-shadow: 0 20px 40px rgba(30, 58, 138, 0.2);
+				aspect-ratio: 4/3;
+				opacity: 0;
+				transform: translateY(40px);
+				transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+			}
+
+			.gallery-item.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.gallery-item img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.6s;
+			}
+
+			.gallery-item:hover img {
+				transform: scale(1.1);
+			}
+
+			.gallery-overlay {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: linear-gradient(to top, rgba(30, 58, 138, 0.95), transparent);
+				padding: 2rem;
+				color: white;
+				transform: translateY(100%);
+				transition: transform 0.4s;
+			}
+
+			.gallery-item:hover .gallery-overlay {
+				transform: translateY(0);
+			}
+
+			/*  EQUIPO */
+			.team-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 3rem;
+				margin: 4rem 0;
+			}
+
+			.team-card {
+				background: white;
+				border-radius: 25px;
+				overflow: hidden;
+				box-shadow: 0 20px 50px rgba(30, 58, 138, 0.15);
+				transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				opacity: 0;
+				transform: translateY(50px);
+			}
+
+			.team-card.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.team-card:hover {
+				transform: translateY(-15px);
+				box-shadow: 0 30px 70px rgba(30, 58, 138, 0.25);
+			}
+
+			.team-image {
+				height: 350px;
+				overflow: hidden;
+			}
+
+			.team-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				transition: transform 0.6s;
+			}
+
+			.team-card:hover .team-image img {
+				transform: scale(1.1);
+			}
+
+			.team-info {
+				padding: 2rem;
+				text-align: center;
+			}
+
+			.team-info h3 {
+				color: var(--tennis-blue);
+				font-size: 1.5rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.team-role {
+				color: var(--tennis-blue-light);
+				font-weight: 600;
+				margin-bottom: 1rem;
+			}
+
+			.team-bio {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				line-height: 1.6;
+			}
+
+			/*  PRECIOS */
+			.pricing-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2.5rem;
+				margin: 4rem 0;
+			}
+
+			.pricing-card {
+				background: white;
+				border-radius: 30px;
+				padding: 3rem 2rem;
+				text-align: center;
+				box-shadow: 0 20px 50px rgba(30, 58, 138, 0.1);
+				border: 3px solid transparent;
+				transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				position: relative;
+				opacity: 0;
+				transform: translateY(50px);
+			}
+
+			.pricing-card.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.pricing-card.featured {
+				border-color: var(--tennis-yellow);
+				transform: scale(1.05);
+			}
+
+			.pricing-card.featured::before {
+				content: 'MÁS POPULAR';
+				position: absolute;
+				top: -12px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: var(--tennis-yellow);
+				color: var(--tennis-blue);
+				padding: 0.5rem 1.5rem;
+				border-radius: 20px;
+				font-weight: 700;
+				font-size: 0.85rem;
+			}
+
+			.pricing-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 30px 70px rgba(30, 58, 138, 0.2);
+			}
+
+			.pricing-card.featured:hover {
+				transform: scale(1.05) translateY(-10px);
+			}
+
+			.pricing-icon {
+				width: 80px;
+				height: 80px;
+				background: linear-gradient(135deg, var(--tennis-blue), var(--tennis-blue-light));
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				margin: 0 auto 1.5rem;
+				color: var(--tennis-yellow);
+				font-size: 2rem;
+			}
+
+			.pricing-card h3 {
+				color: var(--tennis-blue);
+				font-size: 1.8rem;
+				margin-bottom: 1rem;
+			}
+
+			.pricing-price {
+				font-size: 3.5rem;
+				font-weight: 800;
+				color: var(--tennis-blue);
+				margin: 1.5rem 0;
+				font-family: 'Playfair Display', serif;
+			}
+
+			.pricing-price span {
+				font-size: 1rem;
+				color: var(--text-muted);
+				font-weight: 400;
+			}
+
+			.pricing-features {
+				list-style: none;
+				margin: 2rem 0;
+				text-align: left;
+			}
+
+			.pricing-features li {
+				padding: 0.8rem 0;
+				border-bottom: 1px solid rgba(30, 58, 138, 0.1);
+				color: var(--text-muted);
+			}
+
+			.pricing-features li::before {
+				content: '✓';
+				color: var(--tennis-yellow);
+				font-weight: bold;
+				margin-right: 0.5rem;
+			}
+
+			/*  TESTIMONIOS */
+			.testimonials-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2.5rem;
+				margin: 4rem 0;
+			}
+
+			.testimonial-card {
+				background: white;
+				padding: 3rem;
+				border-radius: 25px;
+				box-shadow: 0 20px 50px rgba(30, 58, 138, 0.1);
+				position: relative;
+				opacity: 0;
+				transform: translateY(50px);
+				transition: all 0.5s;
+			}
+
+			.testimonial-card.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.testimonial-card::before {
+				content: '"';
+				font-size: 8rem;
+				color: var(--tennis-yellow);
+				opacity: 0.3;
+				position: absolute;
+				top: -20px;
+				left: 20px;
+				font-family: 'Playfair Display', serif;
+				line-height: 1;
+			}
+
+			.testimonial-text {
+				font-size: 1.1rem;
+				color: var(--text-muted);
+				line-height: 1.8;
+				margin-bottom: 2rem;
+				font-style: italic;
+			}
+
+			.testimonial-author {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+			}
+
+			.testimonial-avatar {
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+
+			.testimonial-name {
+				font-weight: 700;
+				color: var(--tennis-blue);
+			}
+
+			.testimonial-role {
+				color: var(--tennis-blue-light);
+				font-size: 0.9rem;
+			}
+
+			/* ❓ FAQ */
+			.faq-list {
+				max-width: 800px;
+				margin: 4rem auto;
+			}
+
+			.faq-item {
+				background: white;
+				border-radius: 15px;
+				margin-bottom: 1.5rem;
+				overflow: hidden;
+				box-shadow: 0 10px 30px rgba(30, 58, 138, 0.08);
+				opacity: 0;
+				transform: translateY(30px);
+				transition: all 0.5s;
+			}
+
+			.faq-item.animate {
+				opacity: 1;
+				transform: translateY(0);
+			}
+
+			.faq-question {
+				padding: 1.8rem 2rem;
+				cursor: pointer;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				font-weight: 600;
+				color: var(--tennis-blue);
+				font-size: 1.1rem;
+				transition: background 0.3s;
+			}
+
+			.faq-question:hover {
+				background: var(--tennis-sky);
+			}
+
+			.faq-icon {
+				font-size: 1.5rem;
+				color: var(--tennis-yellow);
+				transition: transform 0.3s;
+			}
+
+			.faq-item.active .faq-icon {
+				transform: rotate(45deg);
+			}
+
+			.faq-answer {
+				padding: 0 2rem;
+				max-height: 0;
+				overflow: hidden;
+				transition: all 0.4s;
+				color: var(--text-muted);
+				line-height: 1.8;
+			}
+
+			.faq-item.active .faq-answer {
+				padding: 0 2rem 1.8rem;
+				max-height: 300px;
+			}
+
+			/* 📩 FOOTER */
+			#footer {
+				background: linear-gradient(180deg, var(--tennis-blue) 0%, var(--tennis-blue-dark) 100%);
+				color: #fff;
+				padding: 8rem 0 3rem 0;
+				position: relative;
+				overflow: hidden;
+			}
+
+			#footer::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 1px;
+				background: linear-gradient(90deg, transparent, var(--tennis-yellow), transparent);
+			}
+
+			#footer .major h2 {
+				color: var(--tennis-yellow);
+			}
+
+			#footer .major h2::after {
+				background: var(--tennis-yellow);
+			}
+
+			.form-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.5rem;
+				max-width: 900px;
+				margin: 0 auto;
+			}
+
+			.form-grid .full {
+				grid-column: 1 / -1;
+			}
+
+			#footer input, #footer textarea, #footer select {
+				background: rgba(255, 255, 255, 0.1);
+				border: 2px solid rgba(255, 255, 255, 0.2);
+				color: #fff;
+				padding: 1.2rem 1.6rem;
+				border-radius: 15px;
+				font-size: 1.1rem;
+				font-family: inherit;
+				transition: all 0.4s ease;
+				width: 100%;
+			}
+
+			#footer textarea {
+				min-height: 160px;
+				resize: vertical;
+			}
+
+			#footer input::placeholder, #footer textarea::placeholder, #footer select::placeholder {
+				color: rgba(255, 255, 255, 0.5);
+			}
+
+			#footer select option {
+				background: var(--tennis-blue);
+				color: white;
+			}
+
+			#footer input:focus, #footer textarea:focus, #footer select:focus {
+				border-color: var(--tennis-yellow);
+				background: rgba(255, 255, 255, 0.15);
+				outline: none;
+				box-shadow: 0 0 0 5px rgba(250, 204, 21, 0.2);
+			}
+
+			#footer .button.primary {
+				width: 100%;
+				max-width: 350px;
+				margin: 1.5rem auto 0 auto;
+				display: block;
+				padding: 1.2rem;
+				font-size: 1.15rem;
+			}
+
+			#footer footer {
+				margin-top: 6rem;
+				padding-top: 3.5rem;
+				border-top: 1px solid rgba(255,255,255,0.15);
+				text-align: center;
+			}
+
+			#footer .icons {
+				display: flex;
+				justify-content: center;
+				gap: 1.2rem;
+				margin: 2.5rem 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			#footer .icons a {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 55px;
+				height: 55px;
+				color: rgba(255,255,255,0.85);
+				background: rgba(255,255,255,0.1);
+				border-radius: 50%;
+				font-size: 1.3rem;
+				transition: all 0.4s;
+				text-decoration: none;
+			}
+
+			#footer .icons a:hover {
+				background: var(--tennis-yellow);
+				color: var(--tennis-blue);
+				transform: translateY(-8px);
+			}
+
+			#footer .copyright {
+				color: rgba(255,255,255,0.5);
+				font-size: 0.95rem;
+				margin-top: 2.5rem;
+				list-style: none;
+			}
+
+			.goto-next.scrolly {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 70px;
+				height: 70px;
+				background: var(--tennis-blue);
+				color: var(--tennis-yellow);
+				border-radius: 50%;
+				margin: 4rem auto 0 auto;
+				font-size: 1.6rem;
+				transition: all 0.5s;
+				box-shadow: 0 15px 35px rgba(30, 58, 138, 0.35);
+				text-decoration: none;
+				animation: bounce 2s ease-in-out infinite;
+				cursor: pointer;
+			}
+
+			.goto-next.scrolly:hover {
+				background: var(--tennis-yellow);
+				color: var(--tennis-blue);
+				transform: translateY(10px);
+			}
+
+			/* 💳 MODAL DE PAGO PREMIUM */
+			.modal-overlay {
+				position: fixed;
+				inset: 0;
+				background: rgba(15, 23, 42, 0.85);
+				backdrop-filter: blur(8px);
+				-webkit-backdrop-filter: blur(8px);
+				z-index: 3000;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				opacity: 0;
+				pointer-events: none;
+				transition: opacity 0.4s ease;
+				padding: 1rem;
+			}
+
+			.modal-overlay.active {
+				opacity: 1;
+				pointer-events: all;
+			}
+
+			.modal-content {
+				background: white;
+				border-radius: 24px;
+				width: 100%;
+				max-width: 480px;
+				box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+				transform: translateY(30px) scale(0.95);
+				transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				overflow: hidden;
+			}
+
+			.modal-overlay.active .modal-content {
+				transform: translateY(0) scale(1);
+			}
+
+			.modal-header {
+				background: linear-gradient(135deg, var(--tennis-blue) 0%, var(--tennis-blue-light) 100%);
+				padding: 2rem;
+				color: white;
+				position: relative;
+			}
+
+			.modal-close {
+				position: absolute;
+				top: 1.5rem;
+				right: 1.5rem;
+				background: rgba(255, 255, 255, 0.2);
+				border: none;
+				color: white;
+				width: 36px;
+				height: 36px;
+				border-radius: 50%;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.2rem;
+				transition: all 0.3s;
+			}
+
+			.modal-close:hover {
+				background: rgba(255, 255, 255, 0.4);
+				transform: rotate(90deg);
+			}
+
+			.modal-header h3 {
+				font-size: 1.5rem;
+				margin-bottom: 0.5rem;
+			}
+
+			.modal-plan-info {
+				background: rgba(255, 255, 255, 0.15);
+				padding: 1rem;
+				border-radius: 12px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-top: 1rem;
+				border: 1px solid rgba(255, 255, 255, 0.2);
+			}
+
+			.modal-plan-name {
+				font-weight: 600;
+				font-size: 1.1rem;
+			}
+
+			.modal-plan-price {
+				font-family: 'Playfair Display', serif;
+				font-size: 1.5rem;
+				font-weight: 800;
+				color: var(--tennis-yellow);
+			}
+
+			.modal-body {
+				padding: 2rem;
+			}
+
+			/* Tarjeta de crédito visual */
+			.credit-card-visual {
+				background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+				border-radius: 16px;
+				padding: 1.5rem;
+				color: white;
+				margin-bottom: 2rem;
+				position: relative;
+				height: 180px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				box-shadow: 0 10px 25px rgba(30, 58, 138, 0.3);
+			}
+
+			.credit-card-visual::before {
+				content: '';
+				position: absolute;
+				top: -50%;
+				right: -20%;
+				width: 200px;
+				height: 200px;
+				background: radial-gradient(circle, rgba(250, 204, 21, 0.2) 0%, transparent 70%);
+				border-radius: 50%;
+			}
+
+			.card-chip {
+				width: 45px;
+				height: 35px;
+				background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+				border-radius: 6px;
+				position: relative;
+			}
+
+			.card-chip::after {
+				content: '';
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 30px;
+				height: 20px;
+				border: 2px solid rgba(0,0,0,0.2);
+				border-radius: 4px;
+			}
+
+			.card-number-display {
+				font-family: 'Courier New', monospace;
+				font-size: 1.4rem;
+				letter-spacing: 2px;
+				text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+			}
+
+			.card-details-display {
+				display: flex;
+				justify-content: space-between;
+				font-size: 0.85rem;
+				text-transform: uppercase;
+				opacity: 0.9;
+			}
+
+			.form-group {
+				margin-bottom: 1.5rem;
+			}
+
+			.form-group label {
+				display: block;
+				font-size: 0.9rem;
+				font-weight: 600;
+				color: var(--text-dark);
+				margin-bottom: 0.5rem;
+			}
+
+			.form-group input {
+				width: 100%;
+				padding: 1rem 1.2rem;
+				border: 2px solid #e2e8f0;
+				border-radius: 12px;
+				font-size: 1rem;
+				font-family: inherit;
+				background: var(--bg-soft);
+				transition: all 0.3s ease;
+				color: var(--text-dark);
+			}
+
+			.form-group input:focus {
+				outline: none;
+				border-color: var(--tennis-blue-light);
+				background: white;
+				box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+			}
+
+			.form-row {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+			}
+
+			.btn-pay {
+				width: 100%;
+				padding: 1.2rem;
+				background: linear-gradient(135deg, var(--tennis-yellow) 0%, #eab308 100%);
+				color: var(--tennis-blue-dark);
+				border: none;
+				border-radius: 12px;
+				font-size: 1.1rem;
+				font-weight: 700;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5rem;
+			}
+
+			.btn-pay:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 8px 25px rgba(250, 204, 21, 0.5);
+			}
+
+			.btn-pay:active {
+				transform: translateY(0);
+			}
+
+			.secure-badge {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 0.5rem;
+				margin-top: 1rem;
+				font-size: 0.85rem;
+				color: var(--text-muted);
+			}
+
+			.secure-badge i {
+				color: #10b981;
+			}
+
+			/* Estado de éxito del modal */
+			.modal-success {
+				text-align: center;
+				padding: 3rem 2rem;
+				display: none;
+			}
+
+			.modal-success.active {
+				display: block;
+				animation: fadeInUp 0.5s ease;
+			}
+
+			.success-icon {
+				width: 80px;
+				height: 80px;
+				background: #10b981;
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 2.5rem;
+				margin: 0 auto 1.5rem;
+				box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+			}
+
+			@media (max-width: 768px) {
+				.navbar ul {
+					display: none;
+				}
+				.container {
+					padding: 0 1.5rem;
+				}
+				.pricing-card.featured {
+					transform: none;
+				}
+				.pricing-card.featured:hover {
+					transform: translateY(-10px);
+				}
+				.form-grid {
+					grid-template-columns: 1fr;
+				}
+				.testimonials-grid {
+					grid-template-columns: 1fr;
+				}
+				.form-row {
+					grid-template-columns: 1fr;
+				}
+				.navbar .logo {
+					font-size: 1.5rem;
+				}
+				.navbar .logo svg {
+					width: 36px;
+					height: 36px;
+				}
+			}
+
+			@keyframes fadeInUp {
+				from { opacity: 0; transform: translateY(50px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+
+			@keyframes floatParticles {
+				0%, 100% { transform: translate(0, 0) rotate(0deg); }
+				33% { transform: translate(30px, -30px) rotate(120deg); }
+				66% { transform: translate(-20px, 20px) rotate(240deg); }
+			}
+
+			@keyframes bounce {
+				0%, 100% { transform: translateY(0); }
+				50% { transform: translateY(-10px); }
+			}
+		</style>
+	</head>
+	<body>
+
+		<nav class="navbar" id="navbar">
+			<!-- 🎾 LOGO PREMIUM MEJORADO -->
+			<a href="#header" class="logo">
+				<svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<defs>
+						<linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+							<stop offset="0%" stop-color="#1e3a8a"/>
+							<stop offset="100%" stop-color="#172554"/>
+						</linearGradient>
+						<filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+							<feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#facc15" flood-opacity="0.3"/>
+						</filter>
+					</defs>
+					
+					<!-- Círculo base con degradado y brillo -->
+					<circle cx="50" cy="50" r="46" fill="url(#bgGrad)" filter="url(#glow)"/>
+					
+					<!-- Anillos dorados premium (doble sello) -->
+					<circle cx="50" cy="50" r="46" stroke="#facc15" stroke-width="3" fill="none"/>
+					<circle cx="50" cy="50" r="40" stroke="#facc15" stroke-width="1" fill="none" opacity="0.4"/>
+					
+					<!-- Costuras de la pelota (dinámicas y elegantes) -->
+					<path d="M22 22 C 48 48, 48 52, 22 78" stroke="#facc15" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+					<path d="M78 22 C 52 48, 52 52, 78 78" stroke="#facc15" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+					
+					<!-- Brillo especular sutil (efecto 3D) -->
+					<path d="M20 20 A 42 42 0 0 1 80 20" stroke="white" stroke-width="2" fill="none" opacity="0.15" stroke-linecap="round"/>
+					
+					<!-- Destello/Estrella "Pro" -->
+					<path d="M78 22 L80 16 L82 22 L88 24 L82 26 L80 32 L78 26 L72 24 Z" fill="#facc15"/>
+				</svg>
+				Tenis<span>Pro</span>
+			</a>
+			<ul>
+				<li><a href="#one">Nosotros</a></li>
+				<li><a href="#stats">Estadísticas</a></li>
+				<li><a href="#two">Servicios</a></li>
+				<li><a href="#team">Equipo</a></li>
+				<li><a href="#pricing">Precios</a></li>
+				<li><a href="#gallery">Galería</a></li>
+				<li><a href="#footer">Contacto</a></li>
+			</ul>
+		</nav>
+
+		<section id="header">
+			<h1>Tenis Pro</h1>
+			<p>Donde cada golpe cuenta. Entrenamiento de élite, torneos emocionantes y pura pasión por el deporte.</p>
+			<div class="container">
+				<a href="#one" class="button primary">Comenzar</a>
+			</div>
+		</section>
+
+		<section id="one" class="main special">
+			<div class="container">
+				<header class="major">
+					<h2>Nuestra Pasión por el Tenis</h2>
+				</header>
+				<div class="content">
+					<p>Desde los días de práctica en la cancha de arcilla hasta la emoción de los torneos profesionales, vivimos y respiramos tenis. Nuestro centro cuenta con más de 15 años de experiencia formando campeones y promoviendo el deporte rey de las raquetas.</p>
+				</div>
+				<div class="gallery-grid" style="margin-top: 3rem;">
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\entre.jpg" alt="Tenis profesional" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Entrenamiento Profesional</h4>
+							<p>Técnicas avanzadas</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\pre.png" alt="Canchas" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Instalaciones Premium</h4>
+							<p>Canchas de primer nivel</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\com.jpg" alt="Torneo" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Competencias</h4>
+							<p>Torneos todo el año</p>
+						</div>
+					</div>
+				</div>
+				<a href="#stats" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="stats" class="stats-section">
+			<div class="container">
+				<div class="stats-grid">
+					<div class="stat-item">
+						<span class="stat-number" data-target="1500">0</span>
+						<span class="stat-label">Jugadores Activos</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number" data-target="25">0</span>
+						<span class="stat-label">Entrenadores Certificados</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number" data-target="12">0</span>
+						<span class="stat-label">Canchas Profesionales</span>
+					</div>
+					<div class="stat-item">
+						<span class="stat-number" data-target="50">0</span>
+						<span class="stat-label">Torneos Anuales</span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="two" class="main special">
+			<div class="container">
+				<header class="major">
+					<h2>Servicios Premium</h2>
+				</header>
+				<div class="content">
+					<p>Ofrecemos una experiencia completa para llevar tu juego al siguiente nivel con instalaciones de clase mundial.</p>
+				</div>
+				<ul class="icons-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; list-style: none; margin: 4rem 0;">
+					<li style="background: white; padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(30,58,138,0.1);">
+						<div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--tennis-blue), var(--tennis-blue-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--tennis-yellow); font-size: 2rem;">
+							<i class="fas fa-user-graduate"></i>
+						</div>
+						<h3 style="color: var(--tennis-blue); margin-bottom: 1rem;">Clases Personalizadas</h3>
+						<p style="color: var(--text-muted);">Entrenamiento individual y grupal adaptado a tu nivel y objetivos personales.</p>
+					</li>
+					<li style="background: white; padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(30,58,138,0.1);">
+						<div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--tennis-blue), var(--tennis-blue-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--tennis-yellow); font-size: 2rem;">
+							<i class="fas fa-trophy"></i>
+						</div>
+						<h3 style="color: var(--tennis-blue); margin-bottom: 1rem;">Torneos y Ligas</h3>
+						<p style="color: var(--text-muted);">Competiciones semanales y mensuales para todos los niveles con premios.</p>
+					</li>
+					<li style="background: white; padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(30,58,138,0.1);">
+						<div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--tennis-blue), var(--tennis-blue-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--tennis-yellow); font-size: 2rem;">
+							<i class="fas fa-dumbbell"></i>
+						</div>
+						<h3 style="color: var(--tennis-blue); margin-bottom: 1rem;">Preparación Física</h3>
+						<p style="color: var(--text-muted);">Gimnasio equipado y programas de acondicionamiento específicos.</p>
+					</li>
+					<li style="background: white; padding: 2.5rem; border-radius: 20px; text-align: center; box-shadow: 0 15px 40px rgba(30,58,138,0.1);">
+						<div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--tennis-blue), var(--tennis-blue-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; color: var(--tennis-yellow); font-size: 2rem;">
+							<i class="fas fa-video"></i>
+						</div>
+						<h3 style="color: var(--tennis-blue); margin-bottom: 1rem;">Análisis de Video</h3>
+						<p style="color: var(--text-muted);">Tecnología de punta para analizar y mejorar tu técnica de juego.</p>
+					</li>
+				</ul>
+				<a href="#team" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="team" class="main special" style="background: white;">
+			<div class="container">
+				<header class="major">
+					<h2>Nuestro Equipo de Entrenadores</h2>
+				</header>
+				<div class="content">
+					<p>Profesionales certificados con experiencia internacional listos para guiarte hacia la excelencia.</p>
+				</div>
+				<div class="team-grid">
+					<div class="team-card">
+						<div class="team-image">
+							<img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&q=80" alt="Coach" loading="lazy">
+						</div>
+						<div class="team-info">
+							<h3>Carlos Mendoza</h3>
+							<div class="team-role">Director Técnico</div>
+							<p class="team-bio">Ex-jugador profesional con 20 años de experiencia. Especialista en técnica avanzada y estrategia de juego.</p>
+						</div>
+					</div>
+					<div class="team-card">
+						<div class="team-image">
+							<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" alt="Coach" loading="lazy">
+						</div>
+						<div class="team-info">
+							<h3>Ana Rodríguez</h3>
+							<div class="team-role">Entrenadora Junior</div>
+							<p class="team-bio">Especialista en formación de jóvenes talentos. Certificación ITF Nivel 3.</p>
+						</div>
+					</div>
+					<div class="team-card">
+						<div class="team-image">
+							<img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80" alt="Coach" loading="lazy">
+						</div>
+						<div class="team-info">
+							<h3>Miguel Ángel Torres</h3>
+							<div class="team-role">Preparador Físico</div>
+							<p class="team-bio">Licenciado en Ciencias del Deporte. Experto en prevención de lesiones y rendimiento.</p>
+						</div>
+					</div>
+				</div>
+				<a href="#pricing" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="pricing" class="main special">
+			<div class="container">
+				<header class="major">
+					<h2>Planes y Precios</h2>
+				</header>
+				<div class="content">
+					<p>Elige el plan que mejor se adapte a tus necesidades y comienza tu camino hacia la excelencia.</p>
+				</div>
+				<div class="pricing-grid">
+					<div class="pricing-card" data-plan="Básico" data-price="$49">
+						<div class="pricing-icon"><i class="fas fa-running"></i></div>
+						<h3>Básico</h3>
+						<div class="pricing-price">$49<span>/mes</span></div>
+						<ul class="pricing-features">
+							<li>Acceso a canchas (4 hrs/mes)</li>
+							<li>Clases grupales ilimitadas</li>
+							<li>Acceso al gimnasio</li>
+							<li>Participación en torneos sociales</li>
+							<li>Soporte básico</li>
+						</ul>
+						<button class="button primary choose-plan-btn" style="width: 100%;">Elegir Plan</button>
+					</div>
+					<div class="pricing-card featured" data-plan="Profesional" data-price="$99">
+						<div class="pricing-icon"><i class="fas fa-star"></i></div>
+						<h3>Profesional</h3>
+						<div class="pricing-price">$99<span>/mes</span></div>
+						<ul class="pricing-features">
+							<li>Acceso ilimitado a canchas</li>
+							<li>2 clases privadas/mes</li>
+							<li>Clases grupales ilimitadas</li>
+							<li>Gimnasio y vestuarios premium</li>
+							<li>Análisis de video mensual</li>
+							<li>Descuento en tienda 15%</li>
+						</ul>
+						<button class="button primary choose-plan-btn" style="width: 100%;">Elegir Plan</button>
+					</div>
+					<div class="pricing-card" data-plan="Élite" data-price="$199">
+						<div class="pricing-icon"><i class="fas fa-crown"></i></div>
+						<h3>Élite</h3>
+						<div class="pricing-price">$199<span>/mes</span></div>
+						<ul class="pricing-features">
+							<li>Todo lo del plan Profesional</li>
+							<li>4 clases privadas/mes</li>
+							<li>Preparación física personalizada</li>
+							<li>Nutricionista deportivo</li>
+							<li>Participación en torneos incluidos</li>
+							<li>Descuento en tienda 25%</li>
+							<li>Acceso VIP a eventos</li>
+						</ul>
+						<button class="button primary choose-plan-btn" style="width: 100%;">Elegir Plan</button>
+					</div>
+				</div>
+				<a href="#gallery" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="gallery" class="main special" style="background: white;">
+			<div class="container">
+				<header class="major">
+					<h2>Galería de Instalaciones</h2>
+				</header>
+				<div class="content">
+					<p>Conoce nuestras instalaciones de primer nivel diseñadas para tu máximo rendimiento.</p>
+				</div>
+				<div class="gallery-grid">
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\cancha.jpg" alt="Cancha" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Cancha Central</h4>
+							<p>Superficie dura profesional</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\gim.jpg" alt="Gimnasio" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Gimnasio Equipado</h4>
+							<p>Tecnología de punta</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\ve.jpg" alt="Vestuarios" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Vestuarios Premium</h4>
+							<p>Comodidad y confort</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\tienda.jpg" alt="Tienda" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Tienda Pro Shop</h4>
+							<p>Los mejores equipos</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\cafe.jpg" alt="Cafetería" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Cafetería & Lounge</h4>
+							<p>Espacio de relax</p>
+						</div>
+					</div>
+					<div class="gallery-item">
+						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\ilum.jpg" alt="Iluminación" loading="lazy">
+						<div class="gallery-overlay">
+							<h4>Iluminación Nocturna</h4>
+							<p>Juega de noche</p>
+						</div>
+					</div>
+				</div>
+				<a href="#testimonials" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="testimonials" class="main special">
+			<div class="container">
+				<header class="major">
+					<h2>Lo Que Dicen Nuestros Jugadores</h2>
+				</header>
+				<div class="testimonials-grid">
+					<div class="testimonial-card">
+						<p class="testimonial-text">"Llevo 3 años entrenando en Tenis Pro y mi nivel ha mejorado increíblemente. Los entrenadores son excepcionales y las instalaciones son de primer nivel. ¡Totalmente recomendado!"</p>
+						<div class="testimonial-author">
+							<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Usuario" class="testimonial-avatar">
+							<div>
+								<div class="testimonial-name">Roberto Sánchez</div>
+								<div class="testimonial-role">Jugador desde 2023</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<p class="testimonial-text">"Mis hijos toman clases aquí y están encantados. El ambiente es familiar pero profesional. Han aprendido mucho y han hecho grandes amigos. ¡Gracias Tenis Pro!"</p>
+						<div class="testimonial-author">
+							<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Usuario" class="testimonial-avatar">
+							<div>
+								<div class="testimonial-name">María González</div>
+								<div class="testimonial-role">Madre de estudiantes junior</div>
+							</div>
+						</div>
+					</div>
+					<div class="testimonial-card">
+						<p class="testimonial-text">"Como jugador competitivo, encontré en Tenis Pro el lugar perfecto para entrenar. Los torneos están muy bien organizados y el nivel de juego es excelente."</p>
+						<div class="testimonial-author">
+							<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" alt="Usuario" class="testimonial-avatar">
+							<div>
+								<div class="testimonial-name">Diego Martínez</div>
+								<div class="testimonial-role">Jugador competitivo</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<a href="#faq" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="faq" class="main special" style="background: white;">
+			<div class="container">
+				<header class="major">
+					<h2>Preguntas Frecuentes</h2>
+				</header>
+				<div class="faq-list">
+					<div class="faq-item">
+						<div class="faq-question">
+							<span>¿Necesito experiencia previa para tomar clases?</span>
+							<i class="fas fa-plus faq-icon"></i>
+						</div>
+						<div class="faq-answer">
+							<p>No, ofrecemos clases para todos los niveles desde principiantes hasta avanzados. Nuestros entrenadores evaluarán tu nivel y te ubicarán en el grupo adecuado o diseñarán un plan personalizado según tus objetivos.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<span>¿Puedo reservar canchas si no soy miembro?</span>
+							<i class="fas fa-plus faq-icon"></i>
+						</div>
+						<div class="faq-answer">
+							<p>Sí, ofrecemos alquiler de canchas por hora para no miembros. Sin embargo, nuestros miembros tienen prioridad en las reservas y tarifas preferenciales. Te recomendamos convertirte en miembro para aprovechar todos los beneficios.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<span>¿Qué equipo necesito para comenzar?</span>
+							<i class="fas fa-plus faq-icon"></i>
+						</div>
+						<div class="faq-answer">
+							<p>Solo necesitas ropa deportiva cómoda, zapatillas de tenis y una raqueta. Si no tienes raqueta, podemos prestarte una para tus primeras clases. También contamos con una tienda pro shop donde puedes adquirir todo el equipamiento necesario con asesoramiento profesional.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<span>¿Hay estacionamiento disponible?</span>
+							<i class="fas fa-plus faq-icon"></i>
+						</div>
+						<div class="faq-answer">
+							<p>Sí, contamos con estacionamiento gratuito para todos nuestros visitantes y miembros. Tenemos más de 50 espacios disponibles y el estacionamiento está vigilado las 24 horas.</p>
+						</div>
+					</div>
+					<div class="faq-item">
+						<div class="faq-question">
+							<span>¿Puedo cancelar o cambiar mi membresía?</span>
+							<i class="fas fa-plus faq-icon"></i>
+						</div>
+						<div class="faq-answer">
+							<p>Sí, puedes cambiar de plan en cualquier momento. Las cancelaciones requieren un aviso de 30 días de anticipación. No tenemos cargos por cancelación después del período inicial de compromiso de 3 meses.</p>
+						</div>
+					</div>
+				</div>
+				<a href="#footer" class="goto-next scrolly"><i class="fas fa-chevron-down"></i></a>
+			</div>
+		</section>
+
+		<section id="footer">
+			<div class="container">
+				<header class="major">
+					<h2>Contáctanos</h2>
+					<p>¿Listo para saltar a la cancha? Escríbenos y te responderemos en menos de 24 horas.</p>
+				</header>
+				<form onsubmit="event.preventDefault(); alert('¡Gracias por contactarnos! Te responderemos pronto.'); this.reset();">
+					<div class="form-grid">
+						<div><input type="text" placeholder="Tu nombre completo" required></div>
+						<div><input type="email" placeholder="Tu correo electrónico" required></div>
+						<div><input type="tel" placeholder="Tu teléfono"></div>
+						<div>
+							<select required>
+								<option value="">¿En qué estás interesado?</option>
+								<option value="clases">Clases de tenis</option>
+								<option value="membresia">Membresía</option>
+								<option value="torneos">Torneos</option>
+								<option value="alquiler">Alquiler de cancha</option>
+								<option value="otros">Otros</option>
+							</select>
+						</div>
+						<div class="full"><textarea placeholder="Cuéntanos más sobre ti, tu nivel de juego, horarios preferidos o cualquier pregunta que tengas. Estamos aquí para ayudarte a comenzar tu viaje en el tenis." required></textarea></div>
+						<div class="full">
+							<button type="submit" class="button primary">Enviar Mensaje</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<footer>
+				<ul class="icons">
+					<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+					<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+					<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fab fa-youtube"></i></a></li>
+					<li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+				</ul>
+				<ul class="copyright">
+					<li>&copy; 2026 Tenis Pro. Todos los derechos reservados.</li>
+					<li>Dirección: Av. del Deporte 1234, Ciudad Deportiva</li>
+					<li>Tel: +52 (55) 1234-5678</li>
+				</ul>
+			</footer>
+		</section>
+
+		<!-- 💳 MODAL DE PAGO -->
+		<div id="paymentModal" class="modal-overlay">
+			<div class="modal-content">
+				<!-- Vista del Formulario -->
+				<div id="paymentFormView">
+					<div class="modal-header">
+						<button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
+						<h3>Completar Suscripción</h3>
+						<p style="opacity: 0.9; font-size: 0.95rem;">Ingresa los datos de tu tarjeta de forma segura.</p>
+						<div class="modal-plan-info">
+							<span class="modal-plan-name" id="modalPlanName">Plan Profesional</span>
+							<span class="modal-plan-price" id="modalPlanPrice">$99/mes</span>
+						</div>
+					</div>
+					<div class="modal-body">
+						<!-- Tarjeta Visual -->
+						<div class="credit-card-visual">
+							<div class="card-chip"></div>
+							<div class="card-number-display" id="cardNumberDisplay">•••• •••• •••• ••••</div>
+							<div class="card-details-display">
+								<div>
+									<div style="font-size: 0.7rem; opacity: 0.7; margin-bottom: 4px;">TITULAR</div>
+									<div id="cardNameDisplay">NOMBRE APELLIDO</div>
+								</div>
+								<div>
+									<div style="font-size: 0.7rem; opacity: 0.7; margin-bottom: 4px;">VENCE</div>
+									<div id="cardExpiryDisplay">MM/AA</div>
+								</div>
+							</div>
+						</div>
+
+						<form id="paymentForm">
+							<div class="form-group">
+								<label>Nombre del titular</label>
+								<input type="text" id="cardName" placeholder="Como aparece en la tarjeta" required>
+							</div>
+							<div class="form-group">
+								<label>Número de tarjeta</label>
+								<input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" inputmode="numeric" required>
+							</div>
+							<div class="form-row">
+								<div class="form-group">
+									<label>Fecha de vencimiento</label>
+									<input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5" inputmode="numeric" required>
+								</div>
+								<div class="form-group">
+									<label>CVV</label>
+									<input type="text" id="cardCvv" placeholder="123" maxlength="4" inputmode="numeric" required>
+								</div>
+							</div>
+							<button type="submit" class="btn-pay">
+								<i class="fas fa-lock"></i> Pagar y Suscribirse
+							</button>
+							<div class="secure-badge">
+								<i class="fas fa-shield-alt"></i>
+								<span>Pago encriptado y 100% seguro</span>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<!-- Vista de Éxito -->
+				<div id="paymentSuccessView" class="modal-success">
+					<div class="success-icon">
+						<i class="fas fa-check"></i>
+					</div>
+					<h3 style="color: var(--tennis-blue); margin-bottom: 1rem;">¡Pago Exitoso!</h3>
+					<p style="color: var(--text-muted); margin-bottom: 2rem;">Tu suscripción al <strong id="successPlanName">Plan Profesional</strong> ha sido activada. Recibirás un correo de confirmación shortly.</p>
+					<button class="button primary" id="closeSuccessModal" style="width: 100%;">Volver al Inicio</button>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				// Smooth scroll
+				document.querySelectorAll('a[href^="#"]').forEach(link => {
+					link.addEventListener('click', (e) => {
+						e.preventDefault();
+						const target = document.querySelector(link.getAttribute('href'));
+						if (target) {
+							target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						}
+					});
+				});
+
+				document.querySelectorAll('.goto-next.scrolly').forEach(arrow => {
+					arrow.addEventListener('click', (e) => {
+						e.preventDefault();
+						const target = document.querySelector(arrow.getAttribute('href'));
+						if (target) {
+							target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+						}
+					});
+				});
+
+				// Navbar visibility
+				const navbar = document.getElementById('navbar');
+				window.addEventListener('scroll', () => {
+					if (window.pageYOffset > 200) {
+						navbar.classList.add('visible');
+					} else {
+						navbar.classList.remove('visible');
+					}
+				});
+
+				// Intersection Observer for animations
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('animate');
+						}
+					});
+				}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+				document.querySelectorAll('.major h2, .content p, .gallery-item, .team-card, .pricing-card, .testimonial-card, .faq-item, .icons-grid li').forEach(el => {
+					observer.observe(el);
+				});
+
+				// Counter animation for stats
+				const statsObserver = new IntersectionObserver((entries) => {
+					entries.forEach(entry => {
+						if (entry.isIntersecting) {
+							const target = parseInt(entry.target.getAttribute('data-target'));
+							const duration = 2000;
+							const step = target / (duration / 16);
+							let current = 0;
+							
+							const timer = setInterval(() => {
+								current += step;
+								if (current >= target) {
+									entry.target.textContent = target + '+';
+									clearInterval(timer);
+								} else {
+									entry.target.textContent = Math.floor(current);
+								}
+							}, 16);
+							
+							statsObserver.unobserve(entry.target);
+						}
+					});
+				}, { threshold: 0.5 });
+
+				document.querySelectorAll('.stat-number').forEach(stat => {
+					statsObserver.observe(stat);
+				});
+
+				// FAQ accordion
+				document.querySelectorAll('.faq-question').forEach(question => {
+					question.addEventListener('click', () => {
+						const item = question.parentElement;
+						const isActive = item.classList.contains('active');
+						
+						document.querySelectorAll('.faq-item').forEach(faq => {
+							faq.classList.remove('active');
+						});
+						
+						if (!isActive) {
+							item.classList.add('active');
+						}
+					});
+				});
+
+				// 💳 LÓGICA DEL MODAL DE PAGO
+				const modal = document.getElementById('paymentModal');
+				const closeModalBtn = document.getElementById('closeModal');
+				const choosePlanBtns = document.querySelectorAll('.choose-plan-btn');
+				const modalPlanName = document.getElementById('modalPlanName');
+				const modalPlanPrice = document.getElementById('modalPlanPrice');
+				const successPlanName = document.getElementById('successPlanName');
+				const paymentFormView = document.getElementById('paymentFormView');
+				const paymentSuccessView = document.getElementById('paymentSuccessView');
+				const closeSuccessModal = document.getElementById('closeSuccessModal');
+				const paymentForm = document.getElementById('paymentForm');
+
+				// Elementos de la tarjeta visual
+				const cardNumberInput = document.getElementById('cardNumber');
+				const cardNumberDisplay = document.getElementById('cardNumberDisplay');
+				const cardNameInput = document.getElementById('cardName');
+				const cardNameDisplay = document.getElementById('cardNameDisplay');
+				const cardExpiryInput = document.getElementById('cardExpiry');
+				const cardExpiryDisplay = document.getElementById('cardExpiryDisplay');
+
+				// Abrir modal
+				choosePlanBtns.forEach(btn => {
+					btn.addEventListener('click', () => {
+						const card = btn.closest('.pricing-card');
+						const plan = card.getAttribute('data-plan');
+						const price = card.getAttribute('data-price');
+						
+						modalPlanName.textContent = `Plan ${plan}`;
+						modalPlanPrice.textContent = `${price}/mes`;
+						successPlanName.textContent = `Plan ${plan}`;
+						
+						// Resetear vistas
+						paymentFormView.style.display = 'block';
+						paymentSuccessView.classList.remove('active');
+						paymentForm.reset();
+						cardNumberDisplay.textContent = '•••• •••• •••• ••••';
+						cardNameDisplay.textContent = 'NOMBRE APELLIDO';
+						cardExpiryDisplay.textContent = 'MM/AA';
+						
+						modal.classList.add('active');
+					});
+				});
+
+				// Cerrar modal
+				const closeModal = () => {
+					modal.classList.remove('active');
+				};
+
+				closeModalBtn.addEventListener('click', closeModal);
+				closeSuccessModal.addEventListener('click', () => {
+					closeModal();
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
+
+				modal.addEventListener('click', (e) => {
+					if (e.target === modal) {
+						closeModal();
+					}
+				});
+
+				// Formato de número de tarjeta (XXXX XXXX XXXX XXXX)
+				cardNumberInput.addEventListener('input', (e) => {
+					let value = e.target.value.replace(/\D/g, '');
+					value = value.replace(/(.{4})/g, '$1 ').trim();
+					e.target.value = value;
+					
+					if (value.length > 0) {
+						cardNumberDisplay.textContent = value.padEnd(19, '•');
+					} else {
+						cardNumberDisplay.textContent = '•••• •••• •••• ••••';
+					}
+				});
+
+				// Formato de nombre
+				cardNameInput.addEventListener('input', (e) => {
+					const value = e.target.value.toUpperCase();
+					if (value.length > 0) {
+						cardNameDisplay.textContent = value;
+					} else {
+						cardNameDisplay.textContent = 'NOMBRE APELLIDO';
+					}
+				});
+
+				// Formato de fecha de vencimiento (MM/AA)
+				cardExpiryInput.addEventListener('input', (e) => {
+					let value = e.target.value.replace(/\D/g, '');
+					if (value.length >= 2) {
+						value = value.substring(0, 2) + '/' + value.substring(2, 4);
+					}
+					e.target.value = value;
+					
+					if (value.length > 0) {
+						cardExpiryDisplay.textContent = value.padEnd(5, 'MM/AA');
+					} else {
+						cardExpiryDisplay.textContent = 'MM/AA';
+					}
+				});
+
+				// Simular envío del formulario
+				paymentForm.addEventListener('submit', (e) => {
+					e.preventDefault();
+					
+					const payBtn = paymentForm.querySelector('.btn-pay');
+					const originalText = payBtn.innerHTML;
+					
+					// Estado de carga
+					payBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
+					payBtn.disabled = true;
+					
+					// Simular retraso de red
+					setTimeout(() => {
+						paymentFormView.style.display = 'none';
+						paymentSuccessView.classList.add('active');
+						payBtn.innerHTML = originalText;
+						payBtn.disabled = false;
+					}, 2000);
+				});
+			});
+		</script>
+	</body>
+</html>
