@@ -131,11 +131,17 @@
 
 			.navbar ul a:hover {
 				color: var(--tennis-blue);
+			}
+
+			.navbar ul a:hover::after {
 				width: 100%;
 			}
 
-			/* 🏟️ HEADER CON VIDEO */
+			/* 🏟️ HEADER CON IMAGEN DE FONDO */
 			#header {
+				background: 
+					linear-gradient(160deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%),
+					url('https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
 				min-height: 100vh;
 				display: flex;
 				flex-direction: column;
@@ -145,33 +151,6 @@
 				padding: 4rem 2rem;
 				position: relative;
 				overflow: hidden;
-				background: var(--tennis-blue-dark); /* Fallback */
-			}
-
-			/* Video de fondo */
-			#hero-video {
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				min-width: 100%;
-				min-height: 100%;
-				width: auto;
-				height: auto;
-				transform: translate(-50%, -50%);
-				object-fit: cover;
-				z-index: 0;
-			}
-
-			/* Capa de superposición para legibilidad */
-			#header::after {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background: linear-gradient(160deg, rgba(30, 58, 138, 0.85) 0%, rgba(15, 23, 42, 0.8) 100%);
-				z-index: 0;
 			}
 
 			#header::before {
@@ -182,16 +161,10 @@
 				right: 0;
 				bottom: 0;
 				background-image: 
-					radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.2) 0%, transparent 30%),
-					radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.3) 0%, transparent 30%);
+					radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.3) 0%, transparent 30%),
+					radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.4) 0%, transparent 30%);
 				animation: floatParticles 20s ease-in-out infinite;
 				pointer-events: none;
-				z-index: 0;
-			}
-
-			#header h1, #header p, #header .container, #header .button {
-				position: relative;
-				z-index: 1;
 			}
 
 			#header h1 {
@@ -200,6 +173,8 @@
 				margin-bottom: 1.5rem;
 				text-shadow: 0 4px 30px rgba(0,0,0,0.4);
 				animation: fadeInUp 1.2s ease-out;
+				position: relative;
+				z-index: 1;
 			}
 
 			#header p {
@@ -209,6 +184,8 @@
 				margin: 0 auto 3rem auto;
 				font-weight: 300;
 				animation: fadeInUp 1.2s ease-out 0.3s backwards;
+				position: relative;
+				z-index: 1;
 			}
 
 			.button.primary {
@@ -227,6 +204,8 @@
 				display: inline-block;
 				text-decoration: none;
 				animation: fadeInUp 1.2s ease-out 0.6s backwards;
+				position: relative;
+				z-index: 1;
 				overflow: hidden;
 				cursor: pointer;
 			}
@@ -830,43 +809,6 @@
 				transform: translateY(10px);
 			}
 
-			/* 🎵 BOTÓN DE MÚSICA FLOTANTE */
-			.music-toggle-btn {
-				position: fixed;
-				bottom: 2rem;
-				right: 2rem;
-				width: 60px;
-				height: 60px;
-				background: var(--tennis-blue);
-				color: var(--tennis-yellow);
-				border: 2px solid var(--tennis-yellow);
-				border-radius: 50%;
-				font-size: 1.5rem;
-				cursor: pointer;
-				z-index: 2000;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
-				transition: all 0.3s ease;
-			}
-
-			.music-toggle-btn:hover {
-				background: var(--tennis-yellow);
-				color: var(--tennis-blue);
-				transform: scale(1.1);
-			}
-
-			.music-toggle-btn.playing {
-				animation: pulse-music 2s infinite;
-			}
-
-			@keyframes pulse-music {
-				0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7); }
-				70% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
-				100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
-			}
-
 			/* 💳 MODAL DE PAGO PREMIUM */
 			.modal-overlay {
 				position: fixed;
@@ -1158,13 +1100,6 @@
 					width: 36px;
 					height: 36px;
 				}
-				.music-toggle-btn {
-					width: 50px;
-					height: 50px;
-					font-size: 1.2rem;
-					bottom: 1.5rem;
-					right: 1.5rem;
-				}
 			}
 
 			@keyframes fadeInUp {
@@ -1220,13 +1155,6 @@
 		</nav>
 
 		<section id="header">
-			<!-- 🎾 VIDEO DE FONDO PREMIUM -->
-			<!-- Nota: Puedes reemplazar el 'src' con tu propio video local, ej: src="images/tenis-bg.mp4" -->
-			<video autoplay muted loop playsinline id="hero-video">
-				<source src="https://videos.pexels.com/video-files/5320017/5320017-uhd_2560_1440_25fps.mp4" type="video/mp4">
-				Tu navegador no soporta videos HTML5.
-			</video>
-			
 			<h1>Tenis Pro</h1>
 			<p>Donde cada golpe cuenta. Entrenamiento de élite, torneos emocionantes y pura pasión por el deporte.</p>
 			<div class="container">
@@ -1244,21 +1172,21 @@
 				</div>
 				<div class="gallery-grid" style="margin-top: 3rem;">
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\entre.jpg" alt="Tenis profesional" loading="lazy">
+						<img src="https://tse3.mm.bing.net/th/id/OIP.5cME-4l_bUaH8fJm0WdUjwHaE8?r=0&w=2560&h=1708&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Entrenamiento profesional" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Entrenamiento Profesional</h4>
 							<p>Técnicas avanzadas</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\pre.png" alt="Canchas" loading="lazy">
+						<img src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=800&q=80" alt="Canchas premium" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Instalaciones Premium</h4>
 							<p>Canchas de primer nivel</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\com.jpg" alt="Torneo" loading="lazy">
+						<img src="https://www.cuadranteazul.com/wp-content/uploads/2023/02/IMG-20230224-WA0519-1024x641.jpg" alt="Torneo de tenis" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Competencias</h4>
 							<p>Torneos todo el año</p>
@@ -1444,42 +1372,42 @@
 				</div>
 				<div class="gallery-grid">
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\cancha.jpg" alt="Cancha" loading="lazy">
+						<img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80" alt="Cancha Central" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Cancha Central</h4>
 							<p>Superficie dura profesional</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\gim.jpg" alt="Gimnasio" loading="lazy">
+						<img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gimnasio" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Gimnasio Equipado</h4>
 							<p>Tecnología de punta</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\ve.jpg" alt="Vestuarios" loading="lazy">
+						<img src="https://tse2.mm.bing.net/th/id/OIP.BdRkNLxnOchgNQBrPBl59gHaEo?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Vestuarios" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Vestuarios Premium</h4>
 							<p>Comodidad y confort</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\tienda.jpg" alt="Tienda" loading="lazy">
+						<img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?auto=format&fit=crop&w=800&q=80" alt="Tienda Pro Shop" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Tienda Pro Shop</h4>
 							<p>Los mejores equipos</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\cafe.jpg" alt="Cafetería" loading="lazy">
+						<img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Cafetería" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Cafetería & Lounge</h4>
 							<p>Espacio de relax</p>
 						</div>
 					</div>
 					<div class="gallery-item">
-						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\ilum.jpg" alt="Iluminación" loading="lazy">
+						<img src="https://tse4.mm.bing.net/th/id/OIP.7Ja3IOQhlI-LrsGUmuBMSgHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Iluminación Nocturna" loading="lazy">
 						<div class="gallery-overlay">
 							<h4>Iluminación Nocturna</h4>
 							<p>Juega de noche</p>
@@ -1630,17 +1558,6 @@
 				</ul>
 			</footer>
 		</section>
-
-		<!-- 🎵 BOTÓN DE MÚSICA FLOTANTE -->
-		<!-- Nota: Puedes reemplazar el 'src' con tu propio archivo de audio local, ej: src="images/musica-tenis.mp3" -->
-		<audio id="bg-music" loop>
-			<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=upbeat-sports-11185.mp3" type="audio/mpeg">
-			Tu navegador no soporta el elemento de audio.
-		</audio>
-		
-		<button id="music-toggle" class="music-toggle-btn" title="Reproducir/Pausar Música Ambiental">
-			<i class="fas fa-volume-mute"></i>
-		</button>
 
 		<!-- 💳 MODAL DE PAGO -->
 		<div id="paymentModal" class="modal-overlay">
@@ -1800,26 +1717,6 @@
 							item.classList.add('active');
 						}
 					});
-				});
-
-				// 🎵 LÓGICA DE MÚSICA
-				const musicToggle = document.getElementById('music-toggle');
-				const bgMusic = document.getElementById('bg-music');
-				let isPlaying = false;
-
-				musicToggle.addEventListener('click', () => {
-					if (isPlaying) {
-						bgMusic.pause();
-						musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
-						musicToggle.classList.remove('playing');
-					} else {
-						// Ajusta el volumen a un nivel ambiental suave (30%)
-						bgMusic.volume = 0.3;
-						bgMusic.play().catch(e => console.log("Reproducción automática bloqueada por el navegador:", e));
-						musicToggle.innerHTML = '<i class="fas fa-music"></i>';
-						musicToggle.classList.add('playing');
-					}
-					isPlaying = !isPlaying;
 				});
 
 				// 💳 LÓGICA DEL MODAL DE PAGO
