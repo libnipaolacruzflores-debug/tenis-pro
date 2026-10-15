@@ -1,11 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Tenis Pro | Pasión por la as Cancha</title>
+		<title>Tenis Pro | Pasión por la Cancha</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		
-		<!-- 🎾 FAVICON PREMIUM (Icono en la pestaña del navegador) -->
+		<!-- 🎾 FAVICON PREMIUM -->
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%231e3a8a'/><circle cx='50' cy='50' r='46' stroke='%23facc15' stroke-width='4'/><path d='M22 22 C 48 48, 48 52, 22 78' stroke='%23facc15' stroke-width='5' fill='none' stroke-linecap='round'/><path d='M78 22 C 52 48, 52 52, 78 78' stroke='%23facc15' stroke-width='5' fill='none' stroke-linecap='round'/><path d='M78 22 L80 16 L82 22 L88 24 L82 26 L80 32 L78 26 L72 24 Z' fill='%23facc15'/></svg>" />
 		
 		<!-- Tipografía Premium -->
@@ -17,9 +17,9 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 		
 		<style>
-			/*  PALETA AZUL PREMIUM */
+			/* PALETA AZUL PREMIUM */
 			:root {
-				--tennis-blue: #FF0000;
+				--tennis-blue: #1e3a8a;
 				--tennis-blue-light: #3b82f6;
 				--tennis-blue-dark: #0f172a;
 				--tennis-yellow: #facc15;
@@ -83,7 +83,6 @@
 				transform: translateY(0);
 			}
 
-			/* 🎾 LOGO PREMIUM MEJORADO */
 			.navbar .logo {
 				font-family: 'Playfair Display', serif;
 				font-weight: 800;
@@ -132,17 +131,11 @@
 
 			.navbar ul a:hover {
 				color: var(--tennis-blue);
-			}
-
-			.navbar ul a:hover::after {
 				width: 100%;
 			}
 
-			/* 🏟️ HEADER */
+			/* 🏟️ HEADER CON VIDEO */
 			#header {
-				background: 
-					linear-gradient(160deg, rgba(30, 58, 138, 0.95) 0%, rgba(15, 23, 42, 0.9) 100%),
-					url('https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
 				min-height: 100vh;
 				display: flex;
 				flex-direction: column;
@@ -152,6 +145,33 @@
 				padding: 4rem 2rem;
 				position: relative;
 				overflow: hidden;
+				background: var(--tennis-blue-dark); /* Fallback */
+			}
+
+			/* Video de fondo */
+			#hero-video {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				min-width: 100%;
+				min-height: 100%;
+				width: auto;
+				height: auto;
+				transform: translate(-50%, -50%);
+				object-fit: cover;
+				z-index: 0;
+			}
+
+			/* Capa de superposición para legibilidad */
+			#header::after {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(160deg, rgba(30, 58, 138, 0.85) 0%, rgba(15, 23, 42, 0.8) 100%);
+				z-index: 0;
 			}
 
 			#header::before {
@@ -162,10 +182,16 @@
 				right: 0;
 				bottom: 0;
 				background-image: 
-					radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.3) 0%, transparent 30%),
-					radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.4) 0%, transparent 30%);
+					radial-gradient(circle at 20% 30%, rgba(250, 204, 21, 0.2) 0%, transparent 30%),
+					radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.3) 0%, transparent 30%);
 				animation: floatParticles 20s ease-in-out infinite;
 				pointer-events: none;
+				z-index: 0;
+			}
+
+			#header h1, #header p, #header .container, #header .button {
+				position: relative;
+				z-index: 1;
 			}
 
 			#header h1 {
@@ -174,8 +200,6 @@
 				margin-bottom: 1.5rem;
 				text-shadow: 0 4px 30px rgba(0,0,0,0.4);
 				animation: fadeInUp 1.2s ease-out;
-				position: relative;
-				z-index: 1;
 			}
 
 			#header p {
@@ -185,8 +209,6 @@
 				margin: 0 auto 3rem auto;
 				font-weight: 300;
 				animation: fadeInUp 1.2s ease-out 0.3s backwards;
-				position: relative;
-				z-index: 1;
 			}
 
 			.button.primary {
@@ -205,8 +227,6 @@
 				display: inline-block;
 				text-decoration: none;
 				animation: fadeInUp 1.2s ease-out 0.6s backwards;
-				position: relative;
-				z-index: 1;
 				overflow: hidden;
 				cursor: pointer;
 			}
@@ -360,7 +380,7 @@
 				transform: translateY(0);
 			}
 
-			/*  EQUIPO */
+			/* EQUIPO */
 			.team-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -427,7 +447,7 @@
 				line-height: 1.6;
 			}
 
-			/*  PRECIOS */
+			/* PRECIOS */
 			.pricing-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -533,7 +553,7 @@
 				margin-right: 0.5rem;
 			}
 
-			/*  TESTIMONIOS */
+			/* TESTIMONIOS */
 			.testimonials-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -600,7 +620,7 @@
 				font-size: 0.9rem;
 			}
 
-			/* ❓ FAQ */
+			/* FAQ */
 			.faq-list {
 				max-width: 800px;
 				margin: 4rem auto;
@@ -793,7 +813,7 @@
 				width: 70px;
 				height: 70px;
 				background: var(--tennis-blue);
-				color: var(--tennis-red);
+				color: var(--tennis-yellow);
 				border-radius: 50%;
 				margin: 4rem auto 0 auto;
 				font-size: 1.6rem;
@@ -808,6 +828,43 @@
 				background: var(--tennis-yellow);
 				color: var(--tennis-blue);
 				transform: translateY(10px);
+			}
+
+			/* 🎵 BOTÓN DE MÚSICA FLOTANTE */
+			.music-toggle-btn {
+				position: fixed;
+				bottom: 2rem;
+				right: 2rem;
+				width: 60px;
+				height: 60px;
+				background: var(--tennis-blue);
+				color: var(--tennis-yellow);
+				border: 2px solid var(--tennis-yellow);
+				border-radius: 50%;
+				font-size: 1.5rem;
+				cursor: pointer;
+				z-index: 2000;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				box-shadow: 0 10px 30px rgba(30, 58, 138, 0.4);
+				transition: all 0.3s ease;
+			}
+
+			.music-toggle-btn:hover {
+				background: var(--tennis-yellow);
+				color: var(--tennis-blue);
+				transform: scale(1.1);
+			}
+
+			.music-toggle-btn.playing {
+				animation: pulse-music 2s infinite;
+			}
+
+			@keyframes pulse-music {
+				0% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0.7); }
+				70% { box-shadow: 0 0 0 15px rgba(250, 204, 21, 0); }
+				100% { box-shadow: 0 0 0 0 rgba(250, 204, 21, 0); }
 			}
 
 			/* 💳 MODAL DE PAGO PREMIUM */
@@ -909,7 +966,6 @@
 				padding: 2rem;
 			}
 
-			/* Tarjeta de crédito visual */
 			.credit-card-visual {
 				background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
 				border-radius: 16px;
@@ -1048,7 +1104,6 @@
 				color: #10b981;
 			}
 
-			/* Estado de éxito del modal */
 			.modal-success {
 				text-align: center;
 				padding: 3rem 2rem;
@@ -1103,6 +1158,13 @@
 					width: 36px;
 					height: 36px;
 				}
+				.music-toggle-btn {
+					width: 50px;
+					height: 50px;
+					font-size: 1.2rem;
+					bottom: 1.5rem;
+					right: 1.5rem;
+				}
 			}
 
 			@keyframes fadeInUp {
@@ -1125,7 +1187,6 @@
 	<body>
 
 		<nav class="navbar" id="navbar">
-			<!-- 🎾 LOGO PREMIUM MEJORADO -->
 			<a href="#header" class="logo">
 				<svg width="46" height="46" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<defs>
@@ -1137,25 +1198,15 @@
 							<feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#facc15" flood-opacity="0.3"/>
 						</filter>
 					</defs>
-					
-					<!-- Círculo base con degradado y brillo -->
 					<circle cx="50" cy="50" r="46" fill="url(#bgGrad)" filter="url(#glow)"/>
-					
-					<!-- Anillos dorados premium (doble sello) -->
 					<circle cx="50" cy="50" r="46" stroke="#facc15" stroke-width="3" fill="none"/>
 					<circle cx="50" cy="50" r="40" stroke="#facc15" stroke-width="1" fill="none" opacity="0.4"/>
-					
-					<!-- Costuras de la pelota (dinámicas y elegantes) -->
 					<path d="M22 22 C 48 48, 48 52, 22 78" stroke="#facc15" stroke-width="4.5" fill="none" stroke-linecap="round"/>
 					<path d="M78 22 C 52 48, 52 52, 78 78" stroke="#facc15" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-					
-					<!-- Brillo especular sutil (efecto 3D) -->
 					<path d="M20 20 A 42 42 0 0 1 80 20" stroke="white" stroke-width="2" fill="none" opacity="0.15" stroke-linecap="round"/>
-					
-					<!-- Destello/Estrella "Pro" -->
 					<path d="M78 22 L80 16 L82 22 L88 24 L82 26 L80 32 L78 26 L72 24 Z" fill="#facc15"/>
 				</svg>
-				Tenis<span>Pro </span>
+				Tenis<span>Pro</span>
 			</a>
 			<ul>
 				<li><a href="#one">Nosotros</a></li>
@@ -1169,7 +1220,14 @@
 		</nav>
 
 		<section id="header">
-			<h1>Tenis Pro holaa </h1>
+			<!-- 🎾 VIDEO DE FONDO PREMIUM -->
+			<!-- Nota: Puedes reemplazar el 'src' con tu propio video local, ej: src="images/tenis-bg.mp4" -->
+			<video autoplay muted loop playsinline id="hero-video">
+				<source src="https://videos.pexels.com/video-files/5320017/5320017-uhd_2560_1440_25fps.mp4" type="video/mp4">
+				Tu navegador no soporta videos HTML5.
+			</video>
+			
+			<h1>Tenis Pro</h1>
 			<p>Donde cada golpe cuenta. Entrenamiento de élite, torneos emocionantes y pura pasión por el deporte.</p>
 			<div class="container">
 				<a href="#one" class="button primary">Comenzar</a>
@@ -1188,7 +1246,7 @@
 					<div class="gallery-item">
 						<img src="C:\Users\New User\OneDrive\Desktop\4 parcial de desarrollo\5\sitio modificado\images\entre.jpg" alt="Tenis profesional" loading="lazy">
 						<div class="gallery-overlay">
-							<h4> Entrenamiento Profesional </h4>
+							<h4>Entrenamiento Profesional</h4>
 							<p>Técnicas avanzadas</p>
 						</div>
 					</div>
@@ -1573,10 +1631,20 @@
 			</footer>
 		</section>
 
+		<!-- 🎵 BOTÓN DE MÚSICA FLOTANTE -->
+		<!-- Nota: Puedes reemplazar el 'src' con tu propio archivo de audio local, ej: src="images/musica-tenis.mp3" -->
+		<audio id="bg-music" loop>
+			<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=upbeat-sports-11185.mp3" type="audio/mpeg">
+			Tu navegador no soporta el elemento de audio.
+		</audio>
+		
+		<button id="music-toggle" class="music-toggle-btn" title="Reproducir/Pausar Música Ambiental">
+			<i class="fas fa-volume-mute"></i>
+		</button>
+
 		<!-- 💳 MODAL DE PAGO -->
 		<div id="paymentModal" class="modal-overlay">
 			<div class="modal-content">
-				<!-- Vista del Formulario -->
 				<div id="paymentFormView">
 					<div class="modal-header">
 						<button class="modal-close" id="closeModal"><i class="fas fa-times"></i></button>
@@ -1588,7 +1656,6 @@
 						</div>
 					</div>
 					<div class="modal-body">
-						<!-- Tarjeta Visual -->
 						<div class="credit-card-visual">
 							<div class="card-chip"></div>
 							<div class="card-number-display" id="cardNumberDisplay">•••• •••• •••• ••••</div>
@@ -1634,7 +1701,6 @@
 					</div>
 				</div>
 
-				<!-- Vista de Éxito -->
 				<div id="paymentSuccessView" class="modal-success">
 					<div class="success-icon">
 						<i class="fas fa-check"></i>
@@ -1736,6 +1802,26 @@
 					});
 				});
 
+				// 🎵 LÓGICA DE MÚSICA
+				const musicToggle = document.getElementById('music-toggle');
+				const bgMusic = document.getElementById('bg-music');
+				let isPlaying = false;
+
+				musicToggle.addEventListener('click', () => {
+					if (isPlaying) {
+						bgMusic.pause();
+						musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
+						musicToggle.classList.remove('playing');
+					} else {
+						// Ajusta el volumen a un nivel ambiental suave (30%)
+						bgMusic.volume = 0.3;
+						bgMusic.play().catch(e => console.log("Reproducción automática bloqueada por el navegador:", e));
+						musicToggle.innerHTML = '<i class="fas fa-music"></i>';
+						musicToggle.classList.add('playing');
+					}
+					isPlaying = !isPlaying;
+				});
+
 				// 💳 LÓGICA DEL MODAL DE PAGO
 				const modal = document.getElementById('paymentModal');
 				const closeModalBtn = document.getElementById('closeModal');
@@ -1748,7 +1834,6 @@
 				const closeSuccessModal = document.getElementById('closeSuccessModal');
 				const paymentForm = document.getElementById('paymentForm');
 
-				// Elementos de la tarjeta visual
 				const cardNumberInput = document.getElementById('cardNumber');
 				const cardNumberDisplay = document.getElementById('cardNumberDisplay');
 				const cardNameInput = document.getElementById('cardName');
@@ -1756,7 +1841,6 @@
 				const cardExpiryInput = document.getElementById('cardExpiry');
 				const cardExpiryDisplay = document.getElementById('cardExpiryDisplay');
 
-				// Abrir modal
 				choosePlanBtns.forEach(btn => {
 					btn.addEventListener('click', () => {
 						const card = btn.closest('.pricing-card');
@@ -1767,7 +1851,6 @@
 						modalPlanPrice.textContent = `${price}/mes`;
 						successPlanName.textContent = `Plan ${plan}`;
 						
-						// Resetear vistas
 						paymentFormView.style.display = 'block';
 						paymentSuccessView.classList.remove('active');
 						paymentForm.reset();
@@ -1779,7 +1862,6 @@
 					});
 				});
 
-				// Cerrar modal
 				const closeModal = () => {
 					modal.classList.remove('active');
 				};
@@ -1796,7 +1878,6 @@
 					}
 				});
 
-				// Formato de número de tarjeta (XXXX XXXX XXXX XXXX)
 				cardNumberInput.addEventListener('input', (e) => {
 					let value = e.target.value.replace(/\D/g, '');
 					value = value.replace(/(.{4})/g, '$1 ').trim();
@@ -1809,7 +1890,6 @@
 					}
 				});
 
-				// Formato de nombre
 				cardNameInput.addEventListener('input', (e) => {
 					const value = e.target.value.toUpperCase();
 					if (value.length > 0) {
@@ -1819,7 +1899,6 @@
 					}
 				});
 
-				// Formato de fecha de vencimiento (MM/AA)
 				cardExpiryInput.addEventListener('input', (e) => {
 					let value = e.target.value.replace(/\D/g, '');
 					if (value.length >= 2) {
@@ -1834,18 +1913,15 @@
 					}
 				});
 
-				// Simular envío del formulario
 				paymentForm.addEventListener('submit', (e) => {
 					e.preventDefault();
 					
 					const payBtn = paymentForm.querySelector('.btn-pay');
 					const originalText = payBtn.innerHTML;
 					
-					// Estado de carga
 					payBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Procesando...';
 					payBtn.disabled = true;
 					
-					// Simular retraso de red
 					setTimeout(() => {
 						paymentFormView.style.display = 'none';
 						paymentSuccessView.classList.add('active');
